@@ -1,0 +1,19 @@
+{
+  "name": "praelatus",
+  "version": "0.1.0",
+  "description": "An Open Source note taking app for power users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praelatus/praelatus.git"
+  },
+  "author": "Mathew Robinson <mrobinson@praelatus.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/praelatus/praelatus/issues"
+  },
+  "homepage": "https://github.com/praelatus/praelatus#readme"
+}
