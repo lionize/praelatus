@@ -1,6 +1,7 @@
-const fs   = require('fs');
-const path = require('path');
-const git  = require('nodegit');
+const fs    = require('fs');
+const path  = require('path');
+const git   = require('nodegit');
+const notes = require('../../models/note');
 
 // TODO allow nested notes i.e. note dirs in the user not dir
 module.exports = (noteDir) => {
@@ -88,10 +89,32 @@ module.exports = (noteDir) => {
                                dehumanize(note.title));
 
       return new Promise((res, rej) => {
+        // if you own the note we don't need to check permissions to the note
+        if (owner === author) {
+          fs.writeFile(notePath, notes.toText(note), 'utf-8',
+            (err) => {
+              if (err) return rej(err);
+              return res();
+            });
 
-      }).catch(err => console.error(err));
+          return;
+        }
+
+        // read the note on the fs so we can check permissions
+        fs.readFile(notePath, 'utf-8'
+          (err, data) => {
+            if (err) return rej(err);
+            return res(data);
+          });
+      }).
+        then((body) => {
+
+
+          let fsn = notes.fromBody(body);
+
+          if 
+        }).
+        catch(err => console.error(err));
     }
-
-
   };
 };
