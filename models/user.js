@@ -14,16 +14,22 @@ const schema = {
     password: { type: 'string' }
   },
   require: [ 'fullName', 'email', 'password' ]
-}
+};
 
 module.exports = {
   schema: schema,
   validate: ajv.compile(schema),
 
+  // sanitize will remove sensitive user info
+  sanitize: (user) => {
+    user.password = "";
+    return user;
+  },
+
   // checkPw will return a promise indicating whether the password matches
   // the bcrypted hashword
   checkPw: (password, hashword) => {
-    return bcrypt.compare(password, hashword)
+    return bcrypt.compare(password, hashword);
   },
 
   // new returns a promise of the user object with a bcrypted password
@@ -36,8 +42,8 @@ module.exports = {
           email: email,
           profilePic: md5.update(email).digest('hex'),
           password: pw
-        }
-      })
+        };
+      });
   },
 
-}
+};
