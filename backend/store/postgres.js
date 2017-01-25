@@ -23,7 +23,7 @@ let migrate = (client, res, err) => {
   let schemaVersion = 0;
   if (!err) schemaVersion = res.rows[0].db_version;
 
-  console.log("migrating the database...");
+  console.log('migrating the database...');
   let promises = [];
   for(let i = 0; i < migrations.length; i++) {
     if (migrationVersion(migrations[i]) > schemaVersion) {
@@ -33,7 +33,7 @@ let migrate = (client, res, err) => {
 
   return Promise.all(promises).
     then((res) => {
-      console.log(res);
+      console.log('database successfully migrated...');
       client.release();
     }).
     catch((err) => {
@@ -58,6 +58,15 @@ module.exports = {
     return pool.connect().
       then((client) => {
         return runMigrations(client);
+      }).
+      catch((err) => {
+        console.error(err);
+      });
+  },
+  query: () => {
+    return pool.connect().
+      then((client) => {
+        return client.query(arguments);
       }).
       catch((err) => {
         console.error(err);
