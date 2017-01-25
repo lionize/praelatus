@@ -21,9 +21,9 @@ module.exports = {
   schema: schema,
   validate: ajv.compile(schema),
 
-  // newFromBody will take the contents of a note and parse it into a note
+  // fromText will take the contents of a note and parse it into a note
   // object
-  newFromBody: (body) => {
+  fromText: (body) => {
     let s = body.split('+++');
     // sometimes the first element is an empty string
     if (s[0] === '') s.shift();
@@ -39,9 +39,9 @@ module.exports = {
     return obj;
   },
 
-  // toBody will take a note object and parse it into front matter + body for
+  // toText will take a note object and parse it into front matter + body for
   // storing on the file system
-  toBody: (note) => {
+  toText: (note) => {
     let body = note.body;
     delete note.body;
 
