@@ -15,10 +15,11 @@ create table if not exists users (
 );
 
 create table if not exists jobs (
-    id    serial primary key,
-    name  varchar(250) NOT NULL,
-    body  varchar(250) NOT NULL,
-    owner integer references users(id)
+    id        serial primary key,
+    name      varchar(250) NOT NULL,
+    note_name varchar(250) NOT NULL,
+    body      varchar(250),
+    owner     integer references users(id)
 );
 
 create table if not exists job_notifications (
