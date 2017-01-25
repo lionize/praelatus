@@ -14,6 +14,16 @@ module.exports = (noteDir) => {
     return str.lower().replace(' ', '_');
   };
 
+  let saveNote = (notePath, note) => {
+    return new Promise((res, rej) => {
+      fs.writeFile(notePath, notes.toText(note), 'utf-8',
+        (err) => {
+          if (err) return rej(err);
+          return res();
+        });
+    });
+  };
+
   return {
     // get will get the note body by name for the given user's username
     get: (user, note) => {
@@ -85,36 +95,51 @@ module.exports = (noteDir) => {
     // PermissionError
     update: (owner, author, note) => {
       let notePath = path.join(noteDir, 
-                               owner.username, 
-                               dehumanize(note.title));
+        owner.username, 
+        dehumanize(note.title));
 
       return new Promise((res, rej) => {
         // if you own the note we don't need to check permissions to the note
         if (owner === author) {
-          fs.writeFile(notePath, notes.toText(note), 'utf-8',
-            (err) => {
-              if (err) return rej(err);
-              return res();
-            });
-
-          return;
+          return saveNote(notePath, note);
         }
 
         // read the note on the fs so we can check permissions
-        fs.readFile(notePath, 'utf-8'
+        fs.readFile(notePath, 'utf-8',
           (err, data) => {
             if (err) return rej(err);
             return res(data);
           });
       }).
         then((body) => {
-
-
           let fsn = notes.fromBody(body);
 
-          if 
+          if (fsn.sharedWith.indexOf(author) == -1) {
+            return new Error("access denied");
+          } 
+
+          saveNote(notePath, note);
         }).
         catch(err => console.error(err));
+    },
+
+    // new takes an owner and author (which are user objects) and a note
+    // Permission Error
+    new: (owner, author, note) => {
+      let notePath = path.join(noteDir, 
+        owner.username, 
+        dehumanize(note.title));
+
+      return new Promise((res, rej) => {
+        // if you own the note we don't need to check permissions to the note
+        if (owner === author) {
+          return res(saveNote(notePath, note));
+        }
+
+        return rej(new Error('you are not the owner'));
+      }).
+        catch(err => console.error(err));
     }
+
   };
 };
