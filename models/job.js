@@ -10,7 +10,7 @@ const schema = {
     id: { type: 'integer' },
     name: { type: 'string' },
     body: { type: 'string' },
-    when: { type: 'string', format: 'date-time' }
+    when: { type: 'string', format: 'date-time' },
     owner: users.schema,
     note: notes.schema,
     notify: {
@@ -19,9 +19,9 @@ const schema = {
     }
   },
   require: [ 'name', 'owner', 'body', 'when' ]
-}
+};
 
 module.exports = {
   schema: schema,
   validate: ajv.compile(schema)
-}
+};
