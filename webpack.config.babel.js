@@ -37,7 +37,10 @@ export default {
   },
 
   resolve: {
-    root: [path.resolve(__dirname, 'app'), path.resolve(__dirname, 'node_modules')],
+    root: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
+    alias: {
+      app: '/app'
+    },
     extensions: ['', '.js']
   }
 
