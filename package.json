@@ -4,7 +4,7 @@
   "description": "An Open Source note taking app for power users",
   "main": "backend/main.js",
   "scripts": {
-    "start-frontend": "babel-node devServer.js",
+    "start-app": "babel-node devServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true"
   },
