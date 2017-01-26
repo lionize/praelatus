@@ -4,7 +4,8 @@
   "description": "An Open Source note taking app for power users",
   "main": "backend/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true"
   },
   "repository": {
     "type": "git",
