@@ -36,6 +36,7 @@
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "redux-logger": "^2.7.4",
+    "reduxsauce": "^0.4.1",
     "ws": "^1.1.1"
   },
   "devDependencies": {
