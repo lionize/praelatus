@@ -7,7 +7,8 @@
     "start-app": "babel-node devServer.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true",
     "test": "NODE_PATH=./src mocha --compilers js:babel-core/register --require ./test/test_helper.js --require babel-polyfill --recursive",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "repository": {
     "type": "git",
@@ -52,6 +53,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "flow-bin": "^0.38.0",
     "jsdom": "^9.9.1",
     "mocha": "^3.2.0",
     "path": "^0.12.7",
