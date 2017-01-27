@@ -17,7 +17,7 @@ export default (rootReducer) => {
 
   /* ASSEMBLE MIDDLEWARE */
 
-  const store = createStore(rootReducer, compose(...middleware))
+  const store = createStore(rootReducer, compose(applyMiddleware(...middleware)))
 
   return store
 }
