@@ -39,10 +39,10 @@ export default {
   resolve: {
     root: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
     alias: {
-      app: '/app'
+      app: 'app'
     },
     extensions: ['', '.js']
-  }
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin()
