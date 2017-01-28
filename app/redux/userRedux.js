@@ -28,7 +28,7 @@ export const INITIAL_STATE = Immutable({
 export const request = (state: Object) => state.merge({ fetching: true })
 
 export const success = (state: Object, { user }: Object) =>
-   R.mergeWith(deepMerge, state, {
+  R.mergeWith(deepMerge, state, {
     fetching: false,
     error: null,
     ids: [user.id],

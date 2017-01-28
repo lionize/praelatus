@@ -1,7 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce'
-import R from 'ramda'
 import Immutable from 'seamless-immutable'
-import deepMerge from 'app/utils/deepMerge'
 
 /* TYPES AND ACTION CREATORS */
 
@@ -27,11 +25,13 @@ export const INITIAL_STATE = Immutable({
 
 export const request = (state: Object) => state.merge({ fetching: true })
 
-export const success = (state: Object, { id }: Object) => state.merge({ fetching: false, error: null, currentUser: id })
+export const success = (state: Object, { id }: Object) =>
+  state.merge({ fetching: false, error: null, currentUser: id })
 
-export const failure = (state: Object, { error }: Object) => state.merge({ fetching: false, error })
+export const failure = (state: Object, { error }: Object) =>
+  state.merge({ fetching: false, error })
 
-export const logout = (state: Object) => INITIAL_STATE
+export const logout = () => INITIAL_STATE
 
 /* HOOKUP REDUCERS TO TYPES */
 
