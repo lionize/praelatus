@@ -54,3 +54,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.REGISTER_FAILURE]: registerFailure,
 })
 
+/* SELECTORS */
+
+export const isLoggedIn = (loginState: Object) => loginState.currentUser !== null
+export const currentUser = (loginState: Object) => loginState.currentUser
+export const isFetching = (loginState: Object) => loginState.fetching
+export const error = (loginState: Object) => loginState.error
