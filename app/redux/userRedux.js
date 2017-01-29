@@ -51,3 +51,21 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.FAILURE]: failure,
   [Types.REMOVE]: remove,
 })
+
+/* SELECTORS */
+
+export const userSelector = (userState: Object, id: number) => userState.byId[id]
+
+export const usersSelector = (userState: Object, ids: ?Array<number>) => {
+  let userIds = userState.ids
+
+  if (ids) {
+    userIds = userIds.filter(id => ids.includes(id))
+  }
+
+  return userIds.map(id => userSelector(userState, id))
+}
+
+export const isFetching = (userState: Object) => userState.fetching
+
+export const error = (userState: Object) => userState.error
