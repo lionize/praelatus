@@ -4,11 +4,7 @@
   "description": "An Open Source note taking app for power users",
   "main": "backend/main.js",
   "scripts": {
-    "start-app": "babel-node devServer.js",
-    "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true",
-    "test": "NODE_PATH=./ mocha --compilers js:babel-core/register --require ./test/test_helper.js --require babel-polyfill --recursive",
-    "test:watch": "npm run test -- --watch",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "test": "test"
   },
   "repository": {
     "type": "git",
@@ -30,14 +26,6 @@
     "nodegit": "^0.16.0",
     "pg": "^6.1.2",
     "pg-native": "^1.10.0",
-    "ramda": "^0.23.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.2",
-    "redux": "^3.6.0",
-    "redux-logger": "^2.7.4",
-    "reduxsauce": "^0.4.1",
-    "seamless-immutable": "^7.0.1",
     "ws": "^1.1.1"
   },
   "devDependencies": {
@@ -55,12 +43,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
-    "flow-bin": "^0.38.0",
-    "jsdom": "^9.9.1",
-    "mocha": "^3.2.0",
-    "path": "^0.12.7",
-    "react-hot-loader": "3.0.0-beta.6",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "mocha": "^3.2.0"
   }
 }

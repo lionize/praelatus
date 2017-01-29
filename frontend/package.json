@@ -1,0 +1,66 @@
+{
+  "name": "praelatus",
+  "version": "0.1.0",
+  "description": "An Open Source note taking app for power users",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node devServer.js",
+    "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true",
+    "test": "NODE_PATH=./ mocha --compilers js:babel-core/register --require ./test/test_helper.js --require babel-polyfill --recursive",
+    "test:watch": "npm run test -- --watch",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praelatus/praelatus.git"
+  },
+  "author": "Mathew Robinson <mrobinson@praelatus.io>",
+  "contributors": [
+    {
+      "name": "Mathew Robinson",
+      "email": "mrobinson@praelatus.io"
+    },
+    {
+      "name": "Mark Chandler",
+      "email": "mark.allen.chandler@gmail.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/praelatus/praelatus/issues"
+  },
+  "homepage": "https://github.com/praelatus/praelatus#readme",
+  "dependencies": {
+    "ramda": "^0.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "reduxsauce": "^0.4.1",
+    "seamless-immutable": "^7.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "flow-bin": "^0.38.0",
+    "jsdom": "^9.9.1",
+    "mocha": "^3.2.0",
+    "path": "^0.12.7",
+    "react-hot-loader": "3.0.0-beta.6",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}
