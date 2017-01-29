@@ -52,3 +52,21 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.FAILURE]: failure,
   [Types.REMOVE]: remove,
 })
+
+/* SELECTORS */
+
+export const noteSelector = (noteState: Object, id: number) => noteState.byId[id]
+
+export const notesSelector = (noteState: Object, ids: ?Array<number>) => {
+  let noteIds = noteState.ids
+
+  if (ids) {
+    noteIds = noteIds.filter(id => ids.includes(id))
+  }
+
+  return noteIds.map(id => noteSelector(noteState, id))
+}
+
+export const isFetching = (noteState: Object) => noteState.fetching
+
+export const error = (noteState: Object) => noteState.error
