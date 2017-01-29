@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import deepMerge from 'app/utils/deepMerge'
+import deepMerge from 'utils/deepMerge'
 
 describe('deepMerge', () => {
   describe('with two arrays', () => {

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node devServer.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js -c .eslintrc.js . || true",
-    "test": "NODE_PATH=./ mocha --compilers js:babel-core/register --require ./test/test_helper.js --require babel-polyfill --recursive",
+    "test": "NODE_PATH=./src mocha --compilers js:babel-core/register --require ./test/test_helper.js --require babel-polyfill --recursive",
     "test:watch": "npm run test -- --watch",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },

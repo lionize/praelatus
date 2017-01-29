@@ -6,7 +6,7 @@ import actions, {
   usersSelector,
   isFetching,
   error,
-} from 'app/redux/userRedux'
+} from 'redux/userRedux'
 
 describe('User - Redux', () => {
   describe('reducers', () => {

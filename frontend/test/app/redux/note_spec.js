@@ -6,7 +6,7 @@ import actions, {
   notesSelector,
   isFetching,
   error,
-} from 'app/redux/noteRedux'
+} from 'redux/noteRedux'
 
 describe('Note - Redux', () => {
   describe('reducers', () => {

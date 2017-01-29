@@ -6,7 +6,7 @@ import actions, {
   currentUser,
   isFetching,
   error,
-} from 'app/redux/authRedux'
+} from 'redux/authRedux'
 
 describe('Auth - Redux', () => {
   describe('reducers', () => {
