@@ -1,14 +1,14 @@
 import { expect } from 'chai'
 import actions, {
   reducer,
-  INITIAL_STATE,
-  noteSelector,
-  notesSelector,
+  INITIAL_STATE ,
+  userSelector,
+  usersSelector,
   isFetching,
   error,
-} from 'redux/noteRedux'
+} from 'modules/userRedux'
 
-describe('Note - Redux', () => {
+describe('User - Redux', () => {
   describe('reducers', () => {
     it('request', () => {
       const state = reducer(INITIAL_STATE, actions.request([0]))
@@ -17,15 +17,15 @@ describe('Note - Redux', () => {
     })
 
     it('success', () => {
-      const note = {
+      const user = {
         id: 0,
-        title: 'Note Title',
-        body: 'Note Body',
+        name: 'Test Testerson',
+        email: 'test@testerson.com',
       }
-      const state = reducer(INITIAL_STATE, actions.success(note))
+      const state = reducer(INITIAL_STATE, actions.success(user))
 
       expect(state.ids).to.have.members([0])
-      expect(state.byId[0]).to.eq(note)
+      expect(state.byId[0]).to.eq(user)
     })
 
     it('failure', () => {
@@ -48,38 +48,38 @@ describe('Note - Redux', () => {
   })
 
   describe('selectors', () => {
-    const noteState = {
+    const userState = {
       ids: [0, 1],
       byId: {
         0: {
           id: 0,
-          title: 'Title',
-          body: 'Body',
+          name: 'Test Testerson',
+          email: 'test@testerson.com',
         },
         1: {
           id: 1,
-          title: 'Title',
-          body: 'Body',
+          name: 'Test Testerson II',
+          email: 'testthesecond@testerson.com',
         }
       },
       fetching: true,
       error: 'Error',
     }
 
-    it('noteSelector', () => {
-      expect(noteSelector(noteState, 0)).to.eq(noteState.byId[0])
+    it('userSelector', () => {
+      expect(userSelector(userState, 0)).to.eq(userState.byId[0])
     })
 
-    it('notesSelector', () => {
-      expect(notesSelector(noteState, [0, 1])).to.deep.eq([noteState.byId[0], noteState.byId[1]])
+    it('usersSelector', () => {
+      expect(usersSelector(userState, [0, 1])).to.deep.eq([userState.byId[0], userState.byId[1]])
     })
 
     it('isFetching', () => {
-      expect(isFetching(noteState)).to.be.true
+      expect(isFetching(userState)).to.be.true
     })
 
     it('error', () => {
-      expect(error(noteState)).to.eq('Error')
+      expect(error(userState)).to.eq('Error')
     })
   })
 })
