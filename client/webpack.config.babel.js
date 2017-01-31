@@ -6,7 +6,7 @@ export default {
     'babel-polyfill',
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    './app/index.js'
+    './src/index.js'
   ],
 
   output: {
@@ -37,10 +37,7 @@ export default {
   },
 
   resolve: {
-    root: [path.resolve(__dirname), path.resolve(__dirname, 'node_modules')],
-    alias: {
-      app: 'app'
-    },
+    root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.js']
   },
 
